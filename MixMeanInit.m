@@ -1,14 +1,18 @@
 function meanm = MixMeanInit(data,ks)
-% initialized means = MixMeanInit(data matrix, number groups)
-%  Determine the initial estimated mean vectors for data drawn from a
-%  mixture distributions using Dr. Hamparsum Bozdogan's mean initialization
-%  technique.
-%
-%  Where
-%  data matrix --- (nxp) matrix of data to analyze
-%  number groups --- (scalar) number of groups or classes (k) supposed in data
-%  initialized means --- (kxp) matrix of initialized means, with the mean
-%     vector for group i in row i.
+%{
+  initialized means = MixMeanInit(data matrix, number groups)
+  Determine the initial estimated mean vectors for data drawn from a
+  mixture distributions using Dr. Hamparsum Bozdogan's mean initialization
+  technique.
+
+  Where
+  data matrix --- (nxp) matrix of data to analyze
+  number groups --- (scalar) number of groups or classes (k) supposed in data
+  initialized means --- (kxp) matrix of initialized means, with the mean
+     vector for group i in row i.
+
+  Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+%}
 
 if (nargin ~= 2)
     % wrong number arguments
@@ -37,6 +41,21 @@ for ns = 1:1:p
 end
 meanm = meanm';
 
-% Written By:  Ike Patterson On:  25 May 96, updated JAH 20071008, adapted for octave 3.4.3 20120310
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+Written By:  Ike Patterson On:  25 May 96, updated JAH 20071008, adapted for octave 3.4.3 20120310
+
+Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

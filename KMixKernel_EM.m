@@ -1,30 +1,30 @@
 function [posteriors,newpi,newmu,newsigma] = KMixKernel_EM(data,labels,EMparams,bandtype,smth,savename,init,pltflg)
-% [posteriors, mixing proportions, mean vectors, covar matrices] = KMixKernel_EM(
-% data, labels, EM parameters, bandwidth estimator, covariance smoother, figure name, plot flag, init. method)
-%  This implements the standard EM algorithm for a mixture of kernel density
-%  estimators.  It returns the posterior probabilities of group belonging 
-%  and estimates of the mean vector, covariance matrix, and mixing proportion
-%  per cluster.  Pass in a smoothing code for CovSmooth if you want to smooth
-%  the covariance matrix; otherwise, pass in smth.
-%
-%  Where
-%  data --- (nxp) matrix of data
-%  labels --- n-vector of mixtures assignments in range of 1:k
-%  EM Parameters --- [convergence criteria, max iterations]
-%  bandwidth estimator --- code for MVKDE_Gauss for bandwidth matrix creation
-%  covariance smoother --- alpha code to pass covsmooth
-%  figure name --- name to save figure, include full path; if you don't
-%     want the plot saved as a file, pass in 0.
-%  init. method --- string of initialization method (GARM,GKM,...)
-%  plot flag --- 0 = show only at end; 1 = update on-the-fly
-%  posteriors --- (nxk) matrix of belonging probabilities
-%  mixing proportions --- (1xk) vector of mixing proportions
-%  mean vectors --- (1,p,k) matrix of mean vector per cluster
-%  covar matrices --- (p,p,k) matrix of covariance matrix per cluster
-%
-%  JAH 20070215
-%  Copyright Prof. Hamparsum Bozdogan & J. Andrew Howe
-%  All rights reserved, see LICENSE.TXT
+%{
+ [posteriors, mixing proportions, mean vectors, covar matrices] = KMixKernel_EM(
+  data, labels, EM parameters, bandwidth estimator, covariance smoother, figure name, plot flag, init. method)
+   This implements the standard EM algorithm for a mixture of kernel density
+   estimators.  It returns the posterior probabilities of group belonging 
+   and estimates of the mean vector, covariance matrix, and mixing proportion
+   per cluster.  Pass in a smoothing code for CovSmooth if you want to smooth
+   the covariance matrix; otherwise, pass in smth.
+ 
+   Where
+   data --- (nxp) matrix of data
+   labels --- n-vector of mixtures assignments in range of 1:k
+   EM Parameters --- [convergence criteria, max iterations]
+   bandwidth estimator --- code for MVKDE_Gauss for bandwidth matrix creation
+   covariance smoother --- alpha code to pass covsmooth
+   figure name --- name to save figure, include full path; if you don't
+      want the plot saved as a file, pass in 0.
+   init. method --- string of initialization method (GARM,GKM,...)
+   plot flag --- 0 = show only at end; 1 = update on-the-fly
+   posteriors --- (nxk) matrix of belonging probabilities
+   mixing proportions --- (1xk) vector of mixing proportions
+   mean vectors --- (1,p,k) matrix of mean vector per cluster
+   covar matrices --- (p,p,k) matrix of covariance matrix per cluster
+ 
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+%}
 
 [n,p] = size(data);
 k = max(labels);    % requires at least 1 datapoint in all clusters from 1:max(labels)
@@ -161,3 +161,22 @@ end
 if not(isequal(savename,0))
     hgsave(fhga,[savename,'_EM']); close(fhga)
 end
+
+%{
+JAH 20070215, checked for octave 3.4.3
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

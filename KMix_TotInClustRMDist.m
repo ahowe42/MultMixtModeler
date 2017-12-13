@@ -1,16 +1,20 @@
 function TotRMDist = KMix_TotInClustRMDist(data, labels, smth, regul_scale)
-% total distance = KMix_TotInClustRMDist(data matrix, mixture assignments, ...
-%  covariance smoother, regularizing scale)
-%  This will compute the total regularized mahalanobis distance across all
-%  mixtures in a mixture model.
-%
-%  Where
-%  data matrix --- (nxp) data matrix
-%  mixture assignments --- n-valued vector of assignments 1:k
-%  covariance smoother --- alpha code to pass covsmooth
-%  Regularizing Scale --- if Inf, det(sigma)^c is replaced with C1(sigma)
-%  total distance --- Total within cluster RM distance for mixture model
+%{
+  total distance = KMix_TotInClustRMDist(data matrix, mixture assignments, ...
+  covariance smoother, regularizing scale)
+  This will compute the total regularized mahalanobis distance across all
+  mixtures in a mixture model.
 
+  Where
+  data matrix --- (nxp) data matrix
+  mixture assignments --- n-valued vector of assignments 1:k
+  covariance smoother --- alpha code to pass covsmooth
+  Regularizing Scale --- if Inf, det(sigma)^c is replaced with C1(sigma)
+  total distance --- Total within cluster RM distance for mixture model
+
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
+  
 [n,p] = size(data);
 
 if (length(labels) ~= n) || (nargin ~= 4)
@@ -58,6 +62,21 @@ for datcnt = 1:n
     end
 end     % datapoints loop
 
-% JAH 20060105, adapted for octave 3.4.3 20120324
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+JAH 20060105, adapted for octave 3.4.3 20120324
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

@@ -1,7 +1,11 @@
-% usage: MultRegGaSub_noGUI
-% This will perform multiple simulations/replications of the 
-% multivariate mixture model, with multiple choices of model type.
+%{ Usage: MultRegGaSub_noGUI
+  This will perform multiple simulations/replications of the 
+  multivariate mixture model, with multiple choices of model type.
 
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
+  
+  
 %%% STILL NEED TO SETUP FOR THE DIFFERENT KINDS OF SUBSET ANALYSIS, AS WELL
 %%% AS THE INFLUENCE ANALYSIS !!!
 % Mixture_AllSubsAnal
@@ -140,3 +144,22 @@ MMM.totstt = clock;
 %MMM.init_type = 'KM'; MMM.optim_type = 'EM'; MMM.optim_func = 'KMixPEPK_EM'; drv_Mixture
 % let's do this thing!
 drv_Mixture
+
+%{
+checked for octave 3.4.3 20120324
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

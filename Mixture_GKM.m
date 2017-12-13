@@ -1,11 +1,10 @@
-% usage: THIS MUST BE CALLED FROM drv_Mixture
-% This script will perform one run of mixture modeling using the genetic
-% K-means algorithm to initialize either the EM or genetic EM algorithm.
-%
-% JAH 20061215 (copied from Mixture_GARM)
-% Copyright Prof. Hamparsum Bozdogan & J. Andrew Howe
-% All rights reserved, see LICENSE.TXT
+%{ Usage: THIS MUST BE CALLED FROM drv_Mixture
+  This script will perform one run of mixture modeling using the genetic
+  K-means algorithm to initialize either the EM or genetic EM algorithm.
 
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+%}
+  
 drvstt = clock; rnd_stat = sum(drvstt*1000000); rand('state',rnd_stat);
 stt = sprintf('%4.0f%02.0f%02.0f_%02.0f%02.0f%02.0f',drvstt);
 savename = [mydir,dir,MMM.init_type,'+',MMM.optim_type,'_',stt]; diary([savename,'.out']);
@@ -656,3 +655,22 @@ clear ksell popcnt datcnt gencnt cnt GKM_toc best_table emconvg best_k kstt
 clear genscores confmat popul_size_save infcnt best_score objec_func
 clear global ys
 save([savename,'.mat'])
+
+%{
+JAH 20061215 (copied from Mixture_GARM), adapted for octave 3.4.3
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

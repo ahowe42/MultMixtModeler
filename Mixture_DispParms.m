@@ -1,7 +1,11 @@
-% usage: Mixture_DispParms
-% Use this script to display in a nice formatted "table" all the current
-% parameters select in M3.
+%{ Usage: Mixture_DispParms
+  Use this script to display in a nice formatted "table" all the current
+  parameters select in M3.
 
+  Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+%}
+
+  
 % display the parameters for the mixture modeling
 disp(['Initialization Type: ',MMM.init_type])
 disp(['Maximization Type: ',MMM.optim_type])
@@ -39,6 +43,21 @@ switch MMM.PStype
         disp(['Elliptically-Contoured Distribution Subtype: ',MMM.htype])
 end
 
-% JAH 20070109, adapted for octave 3.4.3 20120319
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+JAH 20070109, adapted for octave 3.4.3 20120319
+
+Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

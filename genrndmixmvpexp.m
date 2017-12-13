@@ -1,11 +1,14 @@
-% usage: genrndmixmvpexp
-% This script will generate random numbers from a mixture of three bivariate
-% power exponential distributions.  The returned data is stored in Data
-% such that the first column is the group labels, and the other columns are
-% the data.  Parameters used are stored in Mu1, Mu2, Mu3, Sigma1, Sigma2,
-% Sigma3, Beta1, Beta2, Beta3, n1, n2, n3.  A formatted string with these
-% parameters is stored in paratit.
+%{ Usage: genrndmixmvpexp
+  This script will generate random numbers from a mixture of three bivariate
+  power exponential distributions.  The returned data is stored in Data
+  such that the first column is the group labels, and the other columns are
+  the data.  Parameters used are stored in Mu1, Mu2, Mu3, Sigma1, Sigma2,
+  Sigma3, Beta1, Beta2, Beta3, n1, n2, n3.  A formatted string with these
+  parameters is stored in paratit.
 
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
+  
 clear, close all, clc
 
 Data = []; k = 3; p = 2;
@@ -55,6 +58,21 @@ disp(sprintf(str,1,Mu1,Sigma1,Beta1,n1))
 disp(sprintf(str,2,Mu2,Sigma2,Beta2,n2))
 disp(sprintf(str,3,Mu3,Sigma3,Beta3,n3))
 
-% JAH 20061230, adapted for octave 3.4.3 20120312
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+JAH 20061230, adapted for octave 3.4.3 20120312
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

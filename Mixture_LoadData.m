@@ -1,23 +1,26 @@
-% usage: Mixture_LoadData
-% This will load the data for M3 in data_file.  If simulated data is 
-% selected, this will load the simulation parameters, but will not do the 
-% simulation.  There are 3 possible values for data_type in M3: -1=simulated, 
-% 0=known with labels, 1 = unknown (no labels).  Required input file formats:
-% simulated:
-%   row 1:        k
-%   row 2:        tab separated mean vector
-%   row 3-p+2:    tab separated covariance matrix
-%   row p+3:      beta tab mixing proportion
-%   must have (k-1)*(p+2) additional rows in the same format
-% known:
-%   [num_obs, num_dims+1]-sized, tab-delimited file
-%   with labels (1,2,...) in FIRST column
-% unknown:
-%   [num_obs, num_dims]-sized, tab-delimited file
+%{ Usage: Mixture_LoadData
+  This will load the data for M3 in data_file.  If simulated data is 
+  selected, this will load the simulation parameters, but will not do the 
+  simulation.  There are 3 possible values for data_type in M3: -1=simulated, 
+  0=known with labels, 1 = unknown (no labels).  Required input file formats:
+  simulated:
+    row 1:        k
+    row 2:        tab separated mean vector
+    row 3-p+2:    tab separated covariance matrix
+    row p+3:      beta tab mixing proportion
+    must have (k-1)*(p+2) additional rows in the same format
+  known:
+    [num_obs, num_dims+1]-sized, tab-delimited file
+    with labels (1,2,...) in FIRST column
+  unknown:
+    [num_obs, num_dims]-sized, tab-delimited file
 
-% data_mixnorm_?: 1=mixed/overlap,2=spherical/nonoverlap,3=ellipsoidal/overlap,4=spherical/overlap
-% JamesData_?: 1=ellipsoidal/nonoverlap,2=ellipsoidal/overlap,3=mixed/overlap
+  data_mixnorm_?: 1=mixed/overlap,2=spherical/nonoverlap,3=ellipsoidal/overlap,4=spherical/overlap
+  JamesData_?: 1=ellipsoidal/nonoverlap,2=ellipsoidal/overlap,3=mixed/overlap
 
+  Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+%}
+  
 datinput = dlmread([MMM.data_path,filesep,MMM.data_file]);
 
 switch MMM.data_type
@@ -46,6 +49,21 @@ switch MMM.data_type
 end
 clear kcnt *rows datinput ind tab
 
-% JAH 20070109, 20120224
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+JAH 20070109, 20120224, adapted for octave 3.4.3
+
+Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

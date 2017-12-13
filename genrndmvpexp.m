@@ -19,7 +19,7 @@ function X = genrndmvpexp(n,p,Mu,Sigma,Beta,plotflg)
 
   See Also GENRNDMIXMVPEXP.
   
-  Copyright (C) 2006 J. Andrew Howe; see below
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
 %}
 
 if (nargin < 5) || (nargin > 6) || (not(isscalar(p))) || (not(isscalar(n))) || (not(isscalar(Beta))) ...
@@ -53,7 +53,7 @@ if plotflg; scatter(X(:,1),X(:,2),[],[],'.'),xlabel('x1'),ylabel('x2'),title('Bi
 %{
 JAH 20061230, 20080204, 20120218
 
-Copyright (C) 2006 J. Andrew Howe
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -1,6 +1,9 @@
-% usage: THIS MUST BE CALLED FROM Mixture_noGUI
-% This script will perform multiple simulations/replications of the core M3
-% scripts - Mixture_GARM, Mixture_GKM, Mixture_KM.
+%{ Usage: THIS MUST BE CALLED FROM Mixture_noGUI
+  This script will perform multiple simulations/replications of the core M3
+  scripts - Mixture_GARM, Mixture_GKM, Mixture_KM.
+
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
 
 % close all figures
 close ALL;
@@ -61,6 +64,21 @@ end
 warning('on','MATLAB:divideByZero'); warning('on','MATLAB:dispatcher:InexactMatch');
 Mixture_MRSummary
 
-% JAH 20061219, adapted for octave 3.4.3 20120324
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+JAH 20061219, checked for octave 3.4.3 20120324
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}
