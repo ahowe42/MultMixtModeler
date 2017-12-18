@@ -1,18 +1,18 @@
 function AIC = KMixGauss_AIC(data, labels, smth, ifprob)
-% AIC = KMixGauss_AIC(data matrix, mixture assignments, ...
-% covariance smoother, problem only)
-%  This will compute AIC for a mixture of normals model.
-%
-%  Where
-%  data matrix --- (nxp) data matrix
-%  mixture assignments --- n-valued vector of assignments 1:k
-%  covariance smoother --- alpha code to pass covsmooth
-%  problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
-%  AIC --- value of AIC for gaussian mixture model
-%
-%  JAH 20061009
-%  Copyright Prof. Hamparsum Bozdogan & J. Andrew Howe
-%  All rights reserved, see LICENSE.TXT
+%{
+  AIC = KMixGauss_AIC(data matrix, mixture assignments, ...
+  covariance smoother, problem only)
+   This will compute AIC for a mixture of normals model.
+
+   Where
+   data matrix --- (nxp) data matrix
+   mixture assignments --- n-valued vector of assignments 1:k
+   covariance smoother --- alpha code to pass covsmooth
+   problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
+   AIC --- value of AIC for gaussian mixture model
+   
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
 
 [n,p] = size(data);
 
@@ -49,3 +49,22 @@ loglike = sum(log(densities));
 
 penalty = 3*(kcnt*p + kcnt*p*(p+1)/2 + (kcnt-1));
 AIC = -2*loglike + penalty;
+
+%{
+JAH 20061009, checked for octave 3.4.3
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

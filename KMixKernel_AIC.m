@@ -1,19 +1,19 @@
 function AIC = KMixKernel_AIC(data,labels,smth,htype,ifprob)
-% AIC = KMixKernel_AIC(data, labels, covariance smoother, ...
-% bandwidth estimator, problem only)
-%  Compute AIC for a mixture of kernel density estimators model.
-%
-%  Where
-%  data --- (nxp) matrix of data
-%  labels --- n-vector of mixtures assignments in range of 1:k
-%  covariance smoother --- alpha code to pass covsmooth
-%  bandwidth estimator --- code for MVKDE_Gauss for bandwidth matrix creation
-%  problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
-%  AIC --- value of AIC for a mixture of kernels model
-%
-%  JAH 20070220
-%  Copyright Prof. Hamparsum Bozdogan & J. Andrew Howe
-%  All rights reserved, see LICENSE.TXT
+%{
+  AIC = KMixKernel_AIC(data, labels, covariance smoother, ...
+  bandwidth estimator, problem only)
+   Compute AIC for a mixture of kernel density estimators model.
+
+   Where
+   data --- (nxp) matrix of data
+   labels --- n-vector of mixtures assignments in range of 1:k
+   covariance smoother --- alpha code to pass covsmooth
+   bandwidth estimator --- code for MVKDE_Gauss for bandwidth matrix creation
+   problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
+   AIC --- value of AIC for a mixture of kernels model
+
+  Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
 
 [n,p] = size(data);
 
@@ -44,3 +44,22 @@ loglike  = sum(log(sum(posteriors,2))); % log-likelihood is sum(log(pi*kernel(da
 
 penalty = 3*(kcnt*hest + (kcnt-1));  % (k-1) mixing proportions, and some # of H elements per group
 AIC = -2*loglike + penalty;
+
+%{
+JAH 20070220, checked for octave 3.4.3
+
+Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

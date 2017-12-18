@@ -1,19 +1,19 @@
 function ICOMPPEU = KMixKernel_ICOMPPEUM(data,labels,smth,htype,ifprob)
-% ICOMPEU = KMixKernel_ICOMPPEUM(data, labels, covariance smoother, ...
-% bandwidth estimator, problem only)
-%  Compute ICOMP for a mixture of kernel density estimators model.
-%
-%  Where
-%  data --- (nxp) matrix of data
-%  labels --- n-vector of mixtures assignments in range of 1:k
-%  covariance smoother --- alpha code to pass covsmooth
-%  bandwidth estimator --- code for MVKDE_Gauss for bandwidth matrix creation
-%  problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
-%  ICOMPPEU --- value of ICOMPPEUM(IFIM) for a mixture of kernels model
-%
-%  JAH 20070220
-%  Copyright Prof. Hamparsum Bozdogan & J. Andrew Howe
-%  All rights reserved, see LICENSE.TXT
+%{
+  ICOMPEU = KMixKernel_ICOMPPEUM(data, labels, covariance smoother, ...
+  bandwidth estimator, problem only)
+   Compute ICOMP for a mixture of kernel density estimators model.
+
+   Where
+   data --- (nxp) matrix of data
+   labels --- n-vector of mixtures assignments in range of 1:k
+   covariance smoother --- alpha code to pass covsmooth
+   bandwidth estimator --- code for MVKDE_Gauss for bandwidth matrix creation
+   problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
+   ICOMPPEU --- value of ICOMPPEUM(IFIM) for a mixture of kernels model
+ 
+  Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
 
 [n,p] = size(data);
 
@@ -67,3 +67,22 @@ bias = 2*n*m/(n - m - 2);
 penalty = m + log(n)*(kcnt*hest*ICOMP_mid - ...
     ((p + 2)*slogdetcov - p*slogknum) - (kcnt*p)*log(2*n))/2 + bias;
 ICOMPPEU = -2*loglike + penalty;
+
+%{
+JAH 20070220, checked for octave 3.4.3
+
+Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

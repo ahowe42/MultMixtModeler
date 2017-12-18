@@ -1,19 +1,19 @@
 function loglike = KMixGauss_loglike(data, labels, smth, ifprob)
-% loglike = KMixGauss_loglike(data matrix, mixture assignments, ...
-% covariance smoother, problem only)
-%  This will compute the negative log-likelihood for a mixture of normals
-%  model, suitable for minimization (as opposed to the typical maximization).
-%
-%  Where
-%  data matrix --- (nxp) data matrix
-%  mixture assignments --- n-valued vector of assignments 1:k
-%  covariance smoother --- alpha code to pass covsmooth
-%  problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
-%  loglike --- value of negative log-likelihood for gaussian mixture model
-%
-%  JAH 20080723
-%  Copyright Prof. Hamparsum Bozdogan & J. Andrew Howe
-%  All rights reserved, see LICENSE.TXT
+%{
+  loglike = KMixGauss_loglike(data matrix, mixture assignments, ...
+  covariance smoother, problem only)
+   This will compute the negative log-likelihood for a mixture of normals
+   model, suitable for minimization (as opposed to the typical maximization).
+
+   Where
+   data matrix --- (nxp) data matrix
+   mixture assignments --- n-valued vector of assignments 1:k
+   covariance smoother --- alpha code to pass covsmooth
+   problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
+   loglike --- value of negative log-likelihood for gaussian mixture model
+
+  Copyright (C) 2008 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
 
 [n,p] = size(data);
 
@@ -47,3 +47,22 @@ end     % mixtures loop
 densities = sum(densities,2);
 %densities(densities == 0) = eps;
 loglike = -sum(log(densities));
+
+%{
+JAH 20080723, checked for octave 3.4.3
+
+Copyright (C) 2008 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

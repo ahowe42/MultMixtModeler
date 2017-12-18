@@ -1,18 +1,18 @@
 function ICOMP = KMixGauss_ICOMPPEUM(data, labels, smth, ifprob)
-% ICOMP = KMixGauss_ICOMPPEUM(data matrix, mixture assignments, ...
-% covariance smoother, problem only)
-%  This will compute ICOMP_PEU_MISP for a mixture of normals model.
-%
-%  Where
-%  data matrix --- (nxp) data matrix
-%  mixture assignments --- n-valued vector of assignments 1:k
-%  covariance smoother --- alpha code to pass covsmooth
-%  problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
-%  ICOMP --- ICOMP(IFIM)_PEU for gaussian mixture model
-%
-%  JAH 20070106
-%  Copyright Prof. Hamparsum Bozdogan & J. Andrew Howe
-%  All rights reserved, see LICENSE.TXT
+%{
+  ICOMP = KMixGauss_ICOMPPEUM(data matrix, mixture assignments, ...
+  covariance smoother, problem only)
+   This will compute ICOMP_PEU_MISP for a mixture of normals model.
+
+   Where
+   data matrix --- (nxp) data matrix
+   mixture assignments --- n-valued vector of assignments 1:k
+   covariance smoother --- alpha code to pass covsmooth
+   problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
+   ICOMP --- ICOMP(IFIM)_PEU for gaussian mixture model
+
+  Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
 
 [n,p] = size(data);
 
@@ -69,3 +69,22 @@ bias = 2*n*m/(n - m - 2);
 penalty = m + log(n)*((kcnt*p + kcnt*p*(p+1)/2)*ICOMP_mid - ...
     ((p + 2)*slogdetcov - p*slogknum) - (kcnt*p)*log(2*n))/2 + bias;
 ICOMP = -2*loglike + penalty;
+
+%{
+JAH 20070106, checked for octave 3.4.3
+
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}
