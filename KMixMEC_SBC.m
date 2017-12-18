@@ -1,18 +1,20 @@
 function SBC = KMixMEC_SBC(data,labels,smth,type,ifprob)
-% SBC = KMixMEC_SBC(data matrix, mixture assignments, covariance smoother,...
-% subtype, problem only)
-%  This will compute SBC for a mixture of elliptically contoured
-%  distriutions model.
-%
-%  Where
-%  data matrix --- (nxp) data matrix
-%  mixture assignments --- n-valued vector of assignments 1:k
-%  covariance smoother --- alpha code to pass covsmooth
-%  subtype --- 'KT' (Kotz) or 'PVII' (Pearson Type VII)
-%  problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
-%  SBC --- value of SBC for MEC mixture model
-%
-%  JAH 20080924
+%{
+  SBC = KMixMEC_SBC(data matrix, mixture assignments, covariance smoother,...
+  subtype, problem only)
+   This will compute SBC for a mixture of elliptically contoured
+   distriutions model.
+
+   Where
+   data matrix --- (nxp) data matrix
+   mixture assignments --- n-valued vector of assignments 1:k
+   covariance smoother --- alpha code to pass covsmooth
+   subtype --- 'KT' (Kotz) or 'PVII' (Pearson Type VII)
+   problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
+   SBC --- value of SBC for MEC mixture model
+
+  Copyright (C) 2008 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
+%}
 
 [n,p] = size(data);
 
@@ -61,3 +63,22 @@ loglike = sum(log(densities));
 % number params per mixture: p means, p(p+1)/2 variances/covariances, 1 beta/nu, 1 mix proportion
 penalty = log(n)*(kcnt*p + kcnt*p*(p+1)/2 + kcnt*1 + (kcnt-1));
 SBC = -2*loglike + penalty;
+
+%{
+JAH 20080924, checked for octave 3.4.3
+
+Copyright (C) 2008 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

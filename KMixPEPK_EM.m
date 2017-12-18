@@ -1,28 +1,30 @@
 function [posteriors,newpi,newmu,newsigma,newbetas] = KMixPEPK_EM(data,labels,EMparams,smth,savename,init,pltflg)
-% [posteriors, mixing proportions, mean vectors, covar matrices, betas] = 
-% KMixPEPK_EM(data, labels, EM parameters, covariance smoother, figure name, init. method, plot flag)
-%  This implements the EM algorithm for a mixture model composed of a
-%  mixture of a product kernel based on the power exponential kernel.  It 
-%  returns the posterior probabilities of group belonging and estimates of
-%  the parameters per cluster.  Pass in a smoothing code for CovSmooth for 
-%  cases in which a cluster's covariance matrix is ill-conditioned.
-%
-%  Where
-%  data --- (nxp) matrix of data
-%  labels --- n-vector of mixtures assignments in range of 1:k
-%  EM Parameters --- [convergence criteria, max iterations]
-%  covariance smoother --- alpha code to pass covsmooth
-%  figure name --- name to save figure, include full path; if you don't
-%     want the plot saved as a file, pass in 0.
-%  init. method --- string of initialization method (GARM,GKM,...)
-%  plot flag --- 0 = show only at end; 1 = update on-the-fly
-%  posteriors --- (nxk) matrix of belonging probabilities
-%  mixing proportions --- (1xk) vector of mixing proportions
-%  mean vectors --- (1,p,k) matrix of mean vector per cluster
-%  covar matrices --- (p,p,k) matrix of covariance matrix per cluster
-%  betas --- (1,p,k) matrix of betas vector per cluster
-%
-%  JAH 20081005
+%{
+  [posteriors, mixing proportions, mean vectors, covar matrices, betas] = 
+  KMixPEPK_EM(data, labels, EM parameters, covariance smoother, figure name, init. method, plot flag)
+   This implements the EM algorithm for a mixture model composed of a
+   mixture of a product kernel based on the power exponential kernel.  It 
+   returns the posterior probabilities of group belonging and estimates of
+   the parameters per cluster.  Pass in a smoothing code for CovSmooth for 
+   cases in which a cluster's covariance matrix is ill-conditioned.
+
+   Where
+   data --- (nxp) matrix of data
+   labels --- n-vector of mixtures assignments in range of 1:k
+   EM Parameters --- [convergence criteria, max iterations]
+   covariance smoother --- alpha code to pass covsmooth
+   figure name --- name to save figure, include full path; if you don't
+      want the plot saved as a file, pass in 0.
+   init. method --- string of initialization method (GARM,GKM,...)
+   plot flag --- 0 = show only at end; 1 = update on-the-fly
+   posteriors --- (nxk) matrix of belonging probabilities
+   mixing proportions --- (1xk) vector of mixing proportions
+   mean vectors --- (1,p,k) matrix of mean vector per cluster
+   covar matrices --- (p,p,k) matrix of covariance matrix per cluster
+   betas --- (1,p,k) matrix of betas vector per cluster
+
+  Copyright (C) 2008 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below   
+%}
 
 [n,p] = size(data);
 k = max(labels);    % requires at least 1 datapoint in all clusters from 1:max(labels)
@@ -171,3 +173,22 @@ end
 if not(isequal(savename,0))
     hgsave(fhga,[savename,'_EM']); close(fhga)
 end
+
+%{
+JAH 20081005, checked for octave 3.4.3
+
+Copyright (C) 2008 Prof. Hamparsum Bozdogan & J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}
