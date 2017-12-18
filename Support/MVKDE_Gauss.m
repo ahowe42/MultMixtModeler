@@ -1,34 +1,39 @@
 function [kdens,hmat,nmparam] = MVKDE_Gauss(datamatrix,dataeval,htype,smth,ifprob)
-% [density estimates, bandwidth matrix, parameter count] = MVKDE_Gauss(data matrix,...
-% eval data, bandwidth estimator, covariance smoother, problem only)
-%  Perform multivariate kernel density estimation using the Gaussian kernel
-%  function.  This function allows the use of a completely general
-%  bandwidth matrix (diagonal or not) that just must be positive definite.
-%  If an incorrect bandwidth estimator code is entered, 3 will be used.  If
-%  the bandwidth matrix is inestimable inf's will be returned.
-%
-%  Where
-%  data matrix --- (nxp) matrix of data, can be univariate
-%  eval data --- (mxp) data for which density estimates should be evaluated
-%  bandwidth estimator --- numeric code indicating which bandwidth matrix estimator to use:
-%   ESTIMATOR                   SHAPE
-%   1 = [((p)^-1)*tr(sigma)]*I  spherical
-%   2 = diag(sigma)             ellipsoidal
-%   3 = W/n                     linear kernel
-%   4 = ((4/(p+2))^(2/(p+4)))*(n^(-2/(p+4)))*sigma
-%   5 = [(4/(p+2))^(1/(p+4))*(n^(-1/(p+4)))]*sqrt(diag(sigma))
-%   6 = [(4/(p+2))^(1/(p+4))*(n^(-1/(p+4)))]*C1(sigma)*I
-%   you can also pass in the pxp bandwidth matrix instead of the estimator type
-%  covariance smoother --- alpha code to pass covsmooth
-%  problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
-%  density estimates --- (mx1) vector of density estimates
-%  bandwidth matrix --- (pxp) matrix specifying amounts and directions of smoothing used
-%  parameter count --- number nonrestricted elements of H matrix
-%
-%  dat = genrndmvnorm(100,2,[-5,5],[2,0.5;0.5,1]); MVKDE_Gauss(dat,[0,0],4,'MLE',1)
-%
-%  See Also KDE, BivarKDE, ProdKDE, KDE_HComp, KDE_ICOMP, MPEProdKernelPDF.
+%{
+  [density estimates, bandwidth matrix, parameter count] = MVKDE_Gauss(data matrix,...
+  eval data, bandwidth estimator, covariance smoother, problem only)
+   Perform multivariate kernel density estimation using the Gaussian kernel
+   function.  This function allows the use of a completely general
+   bandwidth matrix (diagonal or not) that just must be positive definite.
+   If an incorrect bandwidth estimator code is entered, 3 will be used.  If
+   the bandwidth matrix is inestimable inf's will be returned.
 
+   Where
+   data matrix --- (nxp) matrix of data, can be univariate
+   eval data --- (mxp) data for which density estimates should be evaluated
+   bandwidth estimator --- numeric code indicating which bandwidth matrix estimator to use:
+    ESTIMATOR                   SHAPE
+    1 = [((p)^-1)*tr(sigma)]*I  spherical
+    2 = diag(sigma)             ellipsoidal
+    3 = W/n                     linear kernel
+    4 = ((4/(p+2))^(2/(p+4)))*(n^(-2/(p+4)))*sigma
+    5 = [(4/(p+2))^(1/(p+4))*(n^(-1/(p+4)))]*sqrt(diag(sigma))
+    6 = [(4/(p+2))^(1/(p+4))*(n^(-1/(p+4)))]*C1(sigma)*I
+    you can also pass in the pxp bandwidth matrix instead of the estimator type
+   covariance smoother --- alpha code to pass covsmooth
+   problem only --- 1 = instruct CovSmooth to only smooth if problem, 0 = always
+   density estimates --- (mx1) vector of density estimates
+   bandwidth matrix --- (pxp) matrix specifying amounts and directions of smoothing used
+   parameter count --- number nonrestricted elements of H matrix
+
+   dat = genrndmvnorm(100,2,[-5,5],[2,0.5;0.5,1]); MVKDE_Gauss(dat,[0,0],4,'MLE',1)
+
+   See Also KDE, BivarKDE, ProdKDE, KDE_HComp, KDE_ICOMP, MPEProdKernelPDF.
+   
+  Copyright (C) 2007 J. Andrew Howe; see below
+%}
+   
+   
 [n,p] = size(datamatrix); [evan,evap] = size(dataeval);
 
 if (isscalar(datamatrix)) || (p ~= evap)
@@ -95,6 +100,21 @@ for ncnt = 1:evan
 end                 % datapoints to evaluate loop
 kdens = sum(kdens,2)/(n*(2*pi)^(p/2));
 
-% JAH 20070219, adapted for octave 3.4.3 20120315
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+JAH 20070219, adapted for octave 3.4.3 20120315
+
+Copyright (C) 2007 J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

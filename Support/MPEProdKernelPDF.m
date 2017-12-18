@@ -1,19 +1,21 @@
 function [ED,H,betas] = MPEProdKernelPDF(data,dataeval,smth,H,betas)
-% [densities,H,betas] = MPEProdKernelPDF(data,data eval,smoother,bandwidth vector, betas vector)
-%  Compute the density estimates for some data using the product kernel with
-%  the PE kernel function.
-%
-%  Where
-%  data --- (nxp) data matrix
-%  data eval --- (mxp) matrix of data at which to evaluate densities
-%  smoother --- alpha code for covsmooth ('MLE' for none)
-%  bandwidth vector --- optional (1xp) vector of bandwidth values to use
-%  betas vector --- optional (1xp) vector of kurtosis parameters to use
-%  densities --- (mx1) vector of probability densities
-%  H --- (1xp) vector of bandwidth computed using Silerman's rule of Thumb (or just input passed back out)
-%  betas --- (1xp) vector of beta estimates (or just input passed back out)
-%
-%  JAH 20081003
+%{
+  [densities,H,betas] = MPEProdKernelPDF(data,data eval,smoother,bandwidth vector, betas vector)
+   Compute the density estimates for some data using the product kernel with
+   the PE kernel function.
+
+   Where
+   data --- (nxp) data matrix
+   data eval --- (mxp) matrix of data at which to evaluate densities
+   smoother --- alpha code for covsmooth ('MLE' for none)
+   bandwidth vector --- optional (1xp) vector of bandwidth values to use
+   betas vector --- optional (1xp) vector of kurtosis parameters to use
+   densities --- (mx1) vector of probability densities
+   H --- (1xp) vector of bandwidth computed using Silerman's rule of Thumb (or just input passed back out)
+   betas --- (1xp) vector of beta estimates (or just input passed back out)
+
+  Copyright (C) 2008 J. Andrew Howe; see below
+%}
 
 [n,p] = size(data); [ne,pe] = size(dataeval);
 
@@ -77,3 +79,22 @@ ED = ED/(n*prod(H));
 %    ED(ncnt) = sum(t);
 %end                 % datapoints loop
 %ED = ED/(ne*prod(H));
+
+%{
+JAH 20081003, adapted for octave 3.4.3
+
+Copyright (C) 2008 J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}

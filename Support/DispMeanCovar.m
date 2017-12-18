@@ -1,19 +1,23 @@
 function tabout = DispMeanCovar(mu, sigma, sizestr)
-% string table = DispMeanCovar(mean vector, covariance matrix, size string)
-%  This function is simple - take in a mean vector and covariance matrix,
-%  and display both in a nice formatted string.
-%
-%  Where
-%  mean vector  --- (1xp) mean vector
-%  covariance matrix --- (pxp) covariance matrix
-%  size string --- optional character string like %0.2f used for formatting
-%     all values, if omitted, I will figure out the proper string
-%  string table --- string holding nicely formatted parameters
-%
-%  Example: disp(DispMeanCovar([-3,9,-7],[2,0.5,-0.5;0.5,1,0.25;-0.5,0.25,0.5]))
-%
-% See Also: StrPad, table2str, ICSubTable, MatrixtoStr, MakeLaTeXTable.
+%{
+  string table = DispMeanCovar(mean vector, covariance matrix, size string)
+   This function is simple - take in a mean vector and covariance matrix,
+   and display both in a nice formatted string.
 
+   Where
+   mean vector  --- (1xp) mean vector
+   covariance matrix --- (pxp) covariance matrix
+   size string --- optional character string like %0.2f used for formatting
+      all values, if omitted, I will figure out the proper string
+   string table --- string holding nicely formatted parameters
+
+   Example: disp(DispMeanCovar([-3,9,-7],[2,0.5,-0.5;0.5,1,0.25;-0.5,0.25,0.5]))
+
+  See Also: StrPad, table2str, ICSubTable, MatrixtoStr, MakeLaTeXTable.
+  
+  Copyright (C) 2007 J. Andrew Howe; see below
+%}
+  
 p = length(mu);
 ps = size(sigma);
 if ((nargin ~= 2) && (nargin ~= 3)) || (ps(1) ~= ps(2)) || (p ~= ps(1))
@@ -69,6 +73,21 @@ else
     tabout = [StrPad('Mean Vector',max([maxlen,17]),'R');tbmean;StrPad('Covariance Matrix',maxlen,'R');tbcovr];
 end
 
-% JAH 20070810, adapted for octave 3.4.3 20120315
-% this code may be freely used, modified, and distributed (at no charge)
-% as long as this footer remains unaltered
+%{
+JAH 20070810, adapted for octave 3.4.3 20120315
+
+Copyright (C) 2007 J. Andrew Howe
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%}
