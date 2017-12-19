@@ -59,3 +59,9 @@ This holds parameters specific to Power Exponential Kernel mixture models (PEKMM
 - `InfCrit` - Cell with up to 10 string items specifying the names of the PEKMM information criteria function files
 - `optim_func` - String specifying the name of the PEKMM optimization function (EM or GEM)
 - `PStype` - String specifying the name of the type of mixture model being run ('PEKern')
+
+## Advanced Analyses
+My doctoral thesis included two advanced secondary techniques
+- Subset Analysis 
+- Influence Detection
+The Matlab scripts that implemented these techniques, `Mixture_AllSubsAnal`, `Mixture_GASubsAnal`, and `Mixture_OutDetect` have not yet been converted to work without the previous GUI, and so aren't included in the repository.
