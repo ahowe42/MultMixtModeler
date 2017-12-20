@@ -1,4 +1,5 @@
-%{ Usage: THIS MUST BE CALLED FROM Mixture_noGUI
+%{
+  Usage: THIS MUST BE CALLED FROM Mixture_noGUI
   This script will perform multiple simulations/replications of the core M3
   scripts - Mixture_GARM, Mixture_GKM, Mixture_KM.
 

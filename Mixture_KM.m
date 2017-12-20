@@ -1,4 +1,5 @@
-%{ Usage: THIS MUST BE CALLED FROM drv_Mixture
+%{
+  Usage: THIS MUST BE CALLED FROM drv_Mixture
   This script will perform one run of mixture modeling using the K-means
   algorithm to initialize the EM algorithm.  NOTE: this can only be used
   with the EM algorithm

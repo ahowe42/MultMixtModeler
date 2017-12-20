@@ -1,4 +1,5 @@
-%{ Usage: Mixture_LoadData
+%{
+  Usage: Mixture_LoadData
   This will load the data for M3 in data_file.  If simulated data is 
   selected, this will load the simulation parameters, but will not do the 
   simulation.  There are 3 possible values for data_type in M3: -1=simulated, 

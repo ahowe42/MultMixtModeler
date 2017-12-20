@@ -1,10 +1,10 @@
-%{ Usage: Mixture_DispParms
+%{
+  Usage: Mixture_DispParms
   Use this script to display in a nice formatted "table" all the current
   parameters select in M3.
 
   Copyright (C) 2007 Prof. Hamparsum Bozdogan & J. Andrew Howe
 %}
-
   
 % display the parameters for the mixture modeling
 disp(['Initialization Type: ',MMM.init_type])

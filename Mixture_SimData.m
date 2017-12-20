@@ -1,4 +1,5 @@
-%{ Usage: Mixture_SimData
+%{
+  Usage: Mixture_SimData
   After Mixture_LoadData is run, if data_type = -1, this script can be used
   to simulate data from a known mixture of power exponentials.  Simulation
   parameter variables must be set up as in Mixture_LoadData; n (number

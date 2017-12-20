@@ -1,4 +1,5 @@
-%{ Usage: genrndmixmvpexp
+%{
+  Usage: genrndmixmvpexp
   This script will generate random numbers from a mixture of three bivariate
   power exponential distributions.  The returned data is stored in Data
   such that the first column is the group labels, and the other columns are

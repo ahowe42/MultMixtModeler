@@ -1,4 +1,5 @@
-%{ Usage: Mixture_DispStatus
+%{
+  Usage: Mixture_DispStatus
   This will print a message to the command window with information about
   the status of the current Multivariate Mixture Modeler run. It replaces
   the nice status panel that was previously displayed in the GUI. The data,

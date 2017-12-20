@@ -1,4 +1,5 @@
-%{ Usage: THIS MUST BE CALLED FROM drv_Mixture
+%{
+  Usage: THIS MUST BE CALLED FROM drv_Mixture
   This script will perform one run of mixture modeling using the genetic
   K-means algorithm to initialize either the EM or genetic EM algorithm.
 

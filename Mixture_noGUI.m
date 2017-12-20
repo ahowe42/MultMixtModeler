@@ -1,4 +1,5 @@
-%{ Usage: MultRegGaSub_noGUI
+%{
+  Usage: MultRegGaSub_noGUI
   This will perform multiple simulations/replications of the 
   multivariate mixture model, with multiple choices of model type.
 
@@ -22,6 +23,9 @@ mydir = mydir([1:(tmp(end)-1)]);
 if exist([mydir,filesep,'output'],'dir') ~= 7
     mkdir([mydir,filesep,'output']);
 end
+
+% add the support functions folder to the path
+addpath([mydir,filesep,'Support'],'-end');
 
 % SETUP THE DROPDOWN-TYPE CHOICE FIELDS
 %MMM.regul_funcs = CovSmooth();          % covariance regularization
@@ -144,6 +148,9 @@ MMM.totstt = clock;
 %MMM.init_type = 'KM'; MMM.optim_type = 'EM'; MMM.optim_func = 'KMixPEPK_EM'; drv_Mixture
 % let's do this thing!
 drv_Mixture
+
+% remove the support functions folder from the path
+rmpath([mydir,filesep,'Support']);
 
 %{
 checked for octave 3.4.3 20120324

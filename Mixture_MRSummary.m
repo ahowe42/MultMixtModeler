@@ -1,4 +1,5 @@
-%{ Usage: Mixture_MRSummary
+%{
+  Usage: Mixture_MRSummary
   After performing many simulations/replications of M3, this script will
   provide summary results across all runs.  The workspace .mat file from the
   multirun must already be loaded in the workspace.
