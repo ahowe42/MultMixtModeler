@@ -64,4 +64,5 @@ This holds parameters specific to Power Exponential Kernel mixture models (PEKMM
 My doctoral thesis included two advanced secondary techniques
 - Subset Analysis 
 - Influence Detection
+
 The Matlab scripts that implemented these techniques, `Mixture_AllSubsAnal`, `Mixture_GASubsAnal`, and `Mixture_OutDetect` have not yet been converted to work without the previous GUI, and so aren't included in the repository.
