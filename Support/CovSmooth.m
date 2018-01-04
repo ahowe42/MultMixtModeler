@@ -32,7 +32,7 @@ function smcov = CovSmooth(data_matrix,meth,swtch,ifprob,numobs,regul_amnt)
 
   See Also MatrixProblem
 
-  Copyright (C) 2006 J. Andrew Howe; see below
+  Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe; see below
 %}
 
 % if no parameters, pass out list of choices
@@ -131,7 +131,7 @@ end
 %{
 JAH 20060214, Brant Quinton April 2010, JAH adapted for octave 3.4.3 20120305
 
-Copyright (C) 2006 J. Andrew Howe
+Copyright (C) 2006 Prof. Hamparsum Bozdogan & J. Andrew Howe
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
