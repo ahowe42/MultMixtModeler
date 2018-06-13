@@ -34,7 +34,7 @@ addpath([mydir,filesep,'Support'],'-end');
 
 % FIRST SEE IF WE'RE AUGMENTING AN EXISTING RUN
 GAmat = ''; GAcnt = 1;
-[fn,pn] = uigetfile('*.mat', 'Please Select Experiment Results to Augment to Load (OPTIONAL).',[mydir,filesep,'output']);
+[fn,pn] = uigetfile('*.mat', 'Please Select File to Load with Experiment Results to Augment (OPTIONAL, Cancel if none).',[mydir,filesep,'output']);
 if pn ~= 0                  % load the results & set relevant parameters
     load([pn,filesep,fn]);
     GAmat = [pn,fn];
@@ -59,7 +59,7 @@ else                        % setup everything from scratch
         MMM.Krange = [1:MMM.Kmax];
     end
     % now, load any model-specific parameters the user may wish
-    [fn,pn] = uigetfile('*.mat', 'Please Select a Set of Model-Specific Parameters to Load (OPTIONAL).',[mydir,filesep]);
+    [fn,pn] = uigetfile('*.mat', 'Please Select a File to Load with a Set of Model-Specific Parameters (OPTIONAL, Cancel for Gaussian).',[mydir,filesep]);
     if pn == 0
         % user canceled, so just set to Gaussian
         tmp = load('GaussianParams.mat');
