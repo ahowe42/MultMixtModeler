@@ -7,6 +7,7 @@ This is updated Matlab code which I used to generate the mixture models and resu
 -  J A Howe and H Bozdogan.  Robust Mixture Model Cluster Analysis Using Adaptive Kernels. *Journal of Applied Statistics*, pages 320–336, November 2012.
 
 Everything is run starting from the `Mixture_noGUI.m` script, so named because the version used to generate my results used a Matlab GUI. The process followed by `Mixture_noGUI.m` is documented here:
+
 ![](Docs/Mixture_noGUI_ProcessFlow.png?raw=true)
 
 ## Model Parameters
