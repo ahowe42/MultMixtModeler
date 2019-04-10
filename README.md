@@ -62,6 +62,9 @@ This holds parameters specific to Power Exponential Kernel mixture models (PEKMM
 - `optim_func` - String specifying the name of the PEKMM optimization function (EM or GEM)
 - `PStype` - String specifying the name of the type of mixture model being run ('PEKern')
 
+## Input Data
+M3 can work with three types of data input: simulation protocol, known grouping structure, unknown grouping structure. Please see `Mixture_LoadData.m` for the required format of each.
+
 ## Advanced Analyses
 My doctoral thesis included two advanced secondary techniques
 - Subset Analysis 
