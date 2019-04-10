@@ -49,7 +49,13 @@ if pn ~= 0                  % load the results & set relevant parameters
 else                        % setup everything from scratch
     % INITIALIZE MODEL PARAMETERS
     % first get the common model settings
-    MMM = load('MixtureParams.mat');
+    [fn,pn] = uigetfile('*.mat', 'Please Select a File to Load with a Set of Common Model Parameters (OPTIONAL, Cancel for MixtureParams.mat).',[mydir,filesep]);
+    if pn == 0
+        % user canceled, so just set to MixtureParams.mat
+        MMM = load('MixtureParams.mat');
+    else
+        MMM = load([pn,filesep,fn]);
+    end
     % set the Ks evaluated
     if MMM.JustK
         MMM.Knum = 1;                   % just Kmax
